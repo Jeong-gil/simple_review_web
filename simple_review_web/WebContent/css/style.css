@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.basic-board {
+	border: 1px solid green;
+}
+
+.main-teme {
+	border: 1px solid green;
+	padding: 50px;
+	text-align: center;
+}
+
+.main-navi {
+	border: 1px solid green;
+	padding: 30px;
+	text-align: center;
+}
+
+.cursor-pointer {
+	border: 1px solid green;
+	cursor: pointer;
+}
+
+a:link { color: black; text-decoration: none; }
+a:visited { color: black; text-decoration: none; }
+a:hover { color: red; text-decoration: none; }
