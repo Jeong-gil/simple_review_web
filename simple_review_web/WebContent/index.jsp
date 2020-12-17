@@ -8,12 +8,7 @@
 <title>건강 견과류</title>
 </head>
 <body>
-	<header class="main-teme"> 로고 및 대표 이름 </header>
-	<nav class="main-navi">
-		<a class="basic-board" href="a.jsp">건과류</a>
-		<a class="basic-board" href="a.jsp">견과류</a>
-		<a class="basic-board" href="a.jsp">씨앗</a>
-		<a class="basic-board" href="a.jsp">전체상품</a>
-	</nav>
+	<jsp:include page="/include/topHeader.jsp" />
+	<div class="background-img"></div>
 </body>
 </html>
