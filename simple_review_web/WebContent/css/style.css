@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 html {
-	padding: 0px 50px;
+	margin: 0px 200px;
 }
 
 .basic-board {
@@ -84,7 +84,7 @@ a:hover {
 
 .background-img {
 	height: 100vh;
-	background-image: url("/mixed-1938302_1920.jpg");
+	background-image: url("/image/mixed-1938302_1920.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -112,4 +112,24 @@ a:hover {
 	flex-direction: column;
 	flex-wrap: wrap;
 	align-items: center;
+	margin: 50px;
+}
+
+.login-input {
+	width: 250px;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.input-submit {
+	display: block;
+	width: 275px;
+	padding: 10px;
+	height: 60px;
+	margin: 10px 0px;
+}
+
+.input-float-right {
+	float: right;
+	margin-left: 10px;
 }
