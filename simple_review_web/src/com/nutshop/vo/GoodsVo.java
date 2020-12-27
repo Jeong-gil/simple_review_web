@@ -9,6 +9,7 @@ public class GoodsVo {
 	private String type;
 	private String name;
 	private int price;
+	private int salesRate;
 	private String image;
 	private String uploadpath;
 	private Timestamp regDate;
@@ -27,6 +28,9 @@ public class GoodsVo {
 	}
 	public int getPrice() {
 		return price;
+	}
+	public int getSalesRate() {
+		return salesRate;
 	}
 	public String getImage() {
 		return image;
@@ -52,6 +56,9 @@ public class GoodsVo {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public void setSalesRate(int salesRate) {
+		this.salesRate = salesRate;
+	}
 	public void setImage(String image) {
 		this.image = image;
 	}
@@ -65,7 +72,9 @@ public class GoodsVo {
 	@Override
 	public String toString() {
 		return "GoodsVo [number=" + number + ", seller=" + seller + ", type=" + type + ", name=" + name + ", price="
-				+ price + ", image=" + image + ", uploadpath=" + uploadpath + ", regDate=" + regDate + "]";
+				+ price + ", salesRate=" + salesRate + ", image=" + image + ", uploadpath=" + uploadpath + ", regDate="
+				+ regDate + "]";
 	}
+	
 	
 }

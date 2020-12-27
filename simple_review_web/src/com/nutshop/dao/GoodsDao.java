@@ -16,9 +16,9 @@ public class GoodsDao {
 		return instance;
 	}
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
 	private GoodsDao() {}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public void addGoods(GoodsVo goodsVo) {
 		Connection con = null;
@@ -73,6 +73,7 @@ public class GoodsDao {
 				goodsVo.setType(rs.getString("type"));
 				goodsVo.setName(rs.getString("name"));
 				goodsVo.setPrice(rs.getInt("price"));
+				goodsVo.setSalesRate(rs.getInt("sales_rate"));
 				goodsVo.setImage(rs.getString("image"));
 				goodsVo.setUploadpath(rs.getString("uploadpath"));
 				goodsVo.setRegDate(rs.getTimestamp("reg_date"));
@@ -112,6 +113,7 @@ public class GoodsDao {
 				goodsVo.setType(rs.getString("type"));
 				goodsVo.setName(rs.getString("name"));
 				goodsVo.setPrice(rs.getInt("price"));
+				goodsVo.setSalesRate(rs.getInt("sales_rate"));
 				goodsVo.setImage(rs.getString("image"));
 				goodsVo.setUploadpath(rs.getString("uploadpath"));
 				goodsVo.setRegDate(rs.getTimestamp("reg_date"));
@@ -150,6 +152,7 @@ public class GoodsDao {
 				goodsVo.setType(rs.getString("type"));
 				goodsVo.setName(rs.getString("name"));
 				goodsVo.setPrice(rs.getInt("price"));
+				goodsVo.setSalesRate(rs.getInt("sales_rate"));
 				goodsVo.setImage(rs.getString("image"));
 				goodsVo.setUploadpath(rs.getString("uploadpath"));
 				goodsVo.setRegDate(rs.getTimestamp("reg_date"));
@@ -190,6 +193,7 @@ public class GoodsDao {
 				goodsVo.setType(rs.getString("type"));
 				goodsVo.setName(rs.getString("name"));
 				goodsVo.setPrice(rs.getInt("price"));
+				goodsVo.setSalesRate(rs.getInt("sales_rate"));
 				goodsVo.setImage(rs.getString("image"));
 				goodsVo.setUploadpath(rs.getString("uploadpath"));
 				goodsVo.setRegDate(rs.getTimestamp("reg_date"));
@@ -231,6 +235,7 @@ public class GoodsDao {
 				goodsVo.setType(rs.getString("type"));
 				goodsVo.setName(rs.getString("name"));
 				goodsVo.setPrice(rs.getInt("price"));
+				goodsVo.setSalesRate(rs.getInt("sales_rate"));
 				goodsVo.setImage(rs.getString("image"));
 				goodsVo.setUploadpath(rs.getString("uploadpath"));
 				goodsVo.setRegDate(rs.getTimestamp("reg_date"));
@@ -269,6 +274,7 @@ public class GoodsDao {
 				goodsVo.setType(rs.getString("type"));
 				goodsVo.setName(rs.getString("name"));
 				goodsVo.setPrice(rs.getInt("price"));
+				goodsVo.setSalesRate(rs.getInt("sales_rate"));
 				goodsVo.setImage(rs.getString("image"));
 				goodsVo.setUploadpath(rs.getString("uploadpath"));
 				goodsVo.setRegDate(rs.getTimestamp("reg_date"));
@@ -306,6 +312,7 @@ public class GoodsDao {
 				goodsVo.setType(rs.getString("type"));
 				goodsVo.setName(rs.getString("name"));
 				goodsVo.setPrice(rs.getInt("price"));
+				goodsVo.setSalesRate(rs.getInt("sales_rate"));
 				goodsVo.setImage(rs.getString("image"));
 				goodsVo.setUploadpath(rs.getString("uploadpath"));
 				goodsVo.setRegDate(rs.getTimestamp("reg_date"));
@@ -340,6 +347,32 @@ public class GoodsDao {
 			pstmt.setInt(4, goodsVo.getNumber());
 			
 			int cnt = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt);
+		}
+	}
+	
+	public void PurchaseOfProducts(int salesRate, int number) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			sql  = "UPDATE goods ";
+			sql += "SET sales_rate = sales_rate + ? ";
+			sql += "WHERE number = ? ";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, salesRate);
+			pstmt.setInt(2, number);
+			
+			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();

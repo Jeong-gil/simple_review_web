@@ -19,6 +19,8 @@ public class BoardDao {
 		return instance;
 	}
 	
+	private BoardDao() {}
+	
 	//////////////////////////////////////////////////////////////////////////////
 	
 	public int getNextNum() {

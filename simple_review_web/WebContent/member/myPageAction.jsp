@@ -6,7 +6,6 @@ request.setCharacterEncoding("utf-8");
 %>
 <jsp:useBean id="memberVo" class="com.nutshop.vo.MemberVo"/>
 <jsp:setProperty property="*" name="memberVo"/>
-
 <%
 MemberDao memberDao = MemberDao.getInstance();
 memberDao.updateMember(memberVo);
