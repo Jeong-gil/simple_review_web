@@ -107,7 +107,7 @@ pageContext.setAttribute("gender", gender);
 		if (!isRemove) {
 			return false;
 		} else {
-			location.href = '/member/deleteMember.jsp';
+			location.href = '/member/userCheckForDelete.jsp';
 		}
 	});
 </script>

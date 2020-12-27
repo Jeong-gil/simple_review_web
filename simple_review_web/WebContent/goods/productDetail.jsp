@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 int number = Integer.parseInt(request.getParameter("number"));
+String seller = request.getParameter("seller");
 
 GoodsDao goodsDao = GoodsDao.getInstance();
 GoodsVo goodsVo = goodsDao.getGoodsBynumber(number);
@@ -39,7 +40,7 @@ GoodsVo goodsVo = goodsDao.getGoodsBynumber(number);
 	        </fieldset>
 	        <fieldset style="margin-top: 10px; margin-bottom: 20px; width: 250px;">
 	        	<legend>상품 게시판</legend>
-	        	<h3 onclick="location.href='/board/goodsBoard.jsp?goodsNum=<%=number %>'" style="cursor: pointer;"><a>상품 게시판</a></h3>
+	        	<h3 onclick="location.href='/board/goodsBoard.jsp?goodsNum=<%=number %>&seller=<%=seller %>'" style="cursor: pointer;"><a>상품 게시판</a></h3>
 	        </fieldset>
         </div>
 	</div>

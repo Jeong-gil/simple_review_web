@@ -14,6 +14,7 @@ if (id == null) {
 int num = Integer.parseInt(request.getParameter("num"));
 String pageNum = request.getParameter("pageNum");
 String goodsNum = request.getParameter("goodsNum");
+String seller = request.getParameter("seller");
 
 // DAO 객체준비
 BoardDao boardDao = BoardDao.getInstance();
@@ -36,6 +37,7 @@ BoardVo boardVo = boardDao.getBoardByNum(num);
 		<input type="hidden" name="pageNum" value="<%=pageNum %>">
 		<input type="hidden" name="num" value="<%=num %>">
 		<input type="hidden" name="goodsNum" value="<%=goodsNum %>">
+		<input type="hidden" name="seller" value="<%=seller %>">
 		<table border="1">
 			<tr>
 				<th>작성자</th>
@@ -53,7 +55,7 @@ BoardVo boardVo = boardDao.getBoardByNum(num);
 				<td colspan="2">
 					<input type="submit" value="글수정">
 					<input type="reset" value="다시쓰기">
-					<input type="button" value="글목록" onclick="location.href='goodsBoard.jsp?goodsNum=<%=goodsNum %>&pageNum=<%=pageNum %>'">
+					<input type="button" value="글목록" onclick="location.href='goodsBoard.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&pageNum=<%=pageNum %>'">
 				</td>
 			</tr>
 		</table>

@@ -102,7 +102,27 @@ public class MemberDao {
 				// update문장을 가진 pstmt 객체 닫기
 				pstmt.close();
 				
-				// 그 다음으로 회원이 올린 상품도 삭제
+				// 회원이 작성한 글 삭제
+				sql  = "DELETE FROM board WHERE name = ?";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				
+				pstmt.executeUpdate();
+				// update문장을 가진 pstmt 객체 닫기
+				pstmt.close();
+				
+				// 상품 게시판 삭제
+				sql  = "DELETE FROM board WHERE seller = ?";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				
+				pstmt.executeUpdate();
+				// update문장을 가진 pstmt 객체 닫기
+				pstmt.close();
+				
+				// 회원이 올린 상품도 삭제
 				sql = "DELETE FROM goods WHERE seller = ?";
 				
 				pstmt = con.prepareStatement(sql);
@@ -220,6 +240,46 @@ public class MemberDao {
 				JdbcUtils.close(con, pstmt, rs);
 			}
 			return memberVo;
+		}
+		
+		// 로그인 확인.
+		// check -1  없는 아이디
+		// check  0  패스워드 틀림
+		// check  1  아이디, 패스워드 모두 일치
+		public int userCheck(String id, String passwd) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "";
+			
+			int check = -1; // 없는 아이디 상태값으로 초기화
+			
+			try {
+				con = JdbcUtils.getConnection();
+				// id에 해당하는 passwd 가져오기
+				sql = "SELECT passwd FROM member WHERE id = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				// rs에 저장
+				rs = pstmt.executeQuery();
+				// rs에 데이터(행) 있으면
+				//             패스워드 비교  맞으면  check = 1  틀리면  check = 0
+				// rs에 데이터(행) 없으면   check = -1
+				if (rs.next()) {
+					if (passwd.equals(rs.getString("passwd"))) {
+						check = 1;
+					} else {
+						check = 0;
+					}
+				} else {
+					check = -1;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JdbcUtils.close(con, pstmt, rs);
+			}
+			return check;
 		}
 
 }

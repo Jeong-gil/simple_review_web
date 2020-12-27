@@ -1,15 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- pageNum 파라미터값 가져오기 --%>
 <%
 //로그인 여부 확인
 String id = (String) session.getAttribute("id");
 if (id == null) {
-	response.sendRedirect("/board/goodsBoard.jsp");
+	response.sendRedirect("/board/alert.jsp");
 	return;
 }
+
+// 파라미터값  reRef  reLev  reSeq   pageNum 등등 가져오기
+String goodsNum = request.getParameter("goodsNum");
+String reRef = request.getParameter("reRef"); // 답글을 쓰는 대상글에 대한 정보
+String reLev = request.getParameter("reLev");
+String reSeq = request.getParameter("reSeq");
 String pageNum = request.getParameter("pageNum");
-int goodsNum = Integer.parseInt(request.getParameter("goodsNum"));
 String seller = request.getParameter("seller");
 %>
 <!DOCTYPE html>
@@ -17,14 +21,17 @@ String seller = request.getParameter("seller");
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/style.css">
-<title>게시판 글쓰기</title>
+<title>건강 견과류 - 답글 쓰기</title>
 </head>
 <body>
 	<jsp:include page="/include/topHeader.jsp" />
-	<h1>게시판 글쓰기</h1>
+	<h1>게시판 답글쓰기</h1>
 	<hr>
-	<form action="goodsBoardWriteAction.jsp" method="post">
+	<form action="goodsBoardReplyAction.jsp" method="post">
 		<input type="hidden" name="pageNum" value="<%=pageNum %>">
+		<input type="hidden" name="reRef" value="<%=reRef %>">
+		<input type="hidden" name="reLev" value="<%=reLev %>">
+		<input type="hidden" name="reSeq" value="<%=reSeq %>">
 		<input type="hidden" name="goodsNum" value="<%=goodsNum %>">
 		<input type="hidden" name="seller" value="<%=seller %>">
 		<table border="1">
@@ -34,7 +41,7 @@ String seller = request.getParameter("seller");
 			</tr>
 			<tr>
 				<th>제목</th>
-				<td><input type="text" name="subject" required></td>
+				<td><input type="text" name="subject" value="[판매자] " required></td>
 			</tr>
 			<tr>
 				<th>내용</th>
@@ -42,7 +49,7 @@ String seller = request.getParameter("seller");
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="글쓰기">
+					<input type="submit" value="답글쓰기">
 					<input type="reset" value="다시쓰기">
 					<input type="button" value="글목록" onclick="location.href='goodsBoard.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&pageNum=<%=pageNum %>'">
 				</td>

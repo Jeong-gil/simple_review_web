@@ -13,6 +13,9 @@ if (goodsNumS == null) {
 }
 int goodsNum = Integer.parseInt(goodsNumS);
 
+// 판매자 가져오기
+String seller = request.getParameter("seller");
+
 //DAO 객체 준비
 BoardDao boardDao = BoardDao.getInstance();
 
@@ -91,7 +94,7 @@ a.active {
 	<h1>글목록 (전체글갯수: <%=count%>)</h1>
 	<hr>
 	<c:if test="${ sessionScope.id ne null }">
-		<h3><a href="/board/goodsBoardWriteForm.jsp?goodsNum=<%=goodsNum %>&pageNum=<%=pageNum%>">글쓰기</a></h3>
+		<h3><a href="/board/goodsBoardWriteForm.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&pageNum=<%=pageNum%>">글쓰기</a></h3>
 		<h3><a href="#?pageNum=<%=pageNum%>">파일 글쓰기</a></h3>
 	</c:if>
 	<table border="1">
@@ -112,11 +115,11 @@ a.active {
 						if (boardVo.getReLev() > 0) { // 답글이면
 							%>
 							<img src="/images/level.gif" width="<%=boardVo.getReLev() * 15 %>" height="13">
-							<img src="/images/re.gif">
+							<img src="/images/round_subdirectory_arrow_right_black_48dp.png" width="15px;">
 							<%
 						}
 						%>
-						<a href="/board/goodsBoardContent.jsp?goodsNum=<%=goodsNum %>&num=<%=boardVo.getNum() %>&pageNum=<%=pageNum %>"><%=boardVo.getSubject() %></a>
+						<a href="/board/goodsBoardContent.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&num=<%=boardVo.getNum() %>&pageNum=<%=pageNum %>"><%=boardVo.getSubject() %></a>
 					</td>
 					<td><%=boardVo.getName() %></td>
 					<td><%=boardVo.getRegDate() %></td>
@@ -142,7 +145,7 @@ a.active {
 		// [이전]
 		if (startPage > pageBlock) {
 			%>
-			<a href="goodsBoard.jsp?goodsNum=<%=goodsNum %>&pageNum=<%=startPage - pageBlock %>">[이전]</a>
+			<a href="goodsBoard.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&pageNum=<%=startPage - pageBlock %>">[이전]</a>
 			<%
 		}
 		
@@ -150,11 +153,11 @@ a.active {
 		for (int i=startPage; i<=endPage; i++) {
 			if (i == pageNum) {
 				%>
-				<a href="goodsBoard.jsp?goodsNum=<%=goodsNum %>&pageNum=<%=i %>" class="active">[<%=i %>]</a>
+				<a href="goodsBoard.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&pageNum=<%=i %>" class="active">[<%=i %>]</a>
 				<%
 			} else {
 				%>
-				<a href="goodsBoard.jsp?goodsNum=<%=goodsNum %>&pageNum=<%=i %>">[<%=i %>]</a>
+				<a href="goodsBoard.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&pageNum=<%=i %>">[<%=i %>]</a>
 				<%
 			}
 		} // for
@@ -162,7 +165,7 @@ a.active {
 		// [다음]
 		if (endPage < pageCount) {
 			%>
-			<a href="goodsBoard.jsp?goodsNum=<%=goodsNum %>&pageNum=<%=startPage + pageBlock %>">[다음]</a>
+			<a href="goodsBoard.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&pageNum=<%=startPage + pageBlock %>">[다음]</a>
 			<%
 		}
 	}

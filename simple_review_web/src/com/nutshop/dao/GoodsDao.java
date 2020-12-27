@@ -137,8 +137,47 @@ public class GoodsDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			
 			sql = "SELECT * FROM goods WHERE type = ? ORDER BY number DESC";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, selectGoods);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				GoodsVo goodsVo = new GoodsVo();
+				goodsVo.setNumber(rs.getInt("number"));
+				goodsVo.setSeller(rs.getString("seller"));
+				goodsVo.setType(rs.getString("type"));
+				goodsVo.setName(rs.getString("name"));
+				goodsVo.setPrice(rs.getInt("price"));
+				goodsVo.setImage(rs.getString("image"));
+				goodsVo.setUploadpath(rs.getString("uploadpath"));
+				goodsVo.setRegDate(rs.getTimestamp("reg_date"));
+				
+				goodsList.add(goodsVo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt, rs);
+		}
+		return goodsList;
+	}
+	
+	public List<GoodsVo> selectGoods(String selectGoods, String sort) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<GoodsVo> goodsList = new ArrayList<>();
+		String sql  = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			if (sort.equals("lowPrice")) {
+				sql = "SELECT * FROM goods WHERE type = ? ORDER BY price, number DESC";
+			}
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, selectGoods);
@@ -260,8 +299,6 @@ public class GoodsDao {
 			pstmt.setString(1, seller);
 			rs = pstmt.executeQuery();
 			
-			System.out.println("getGoodsBySeller실행");
-			
 			while (rs.next()) {
 				GoodsVo goodsVo = new GoodsVo();
 				goodsVo.setNumber(rs.getInt("number"));
@@ -272,8 +309,6 @@ public class GoodsDao {
 				goodsVo.setImage(rs.getString("image"));
 				goodsVo.setUploadpath(rs.getString("uploadpath"));
 				goodsVo.setRegDate(rs.getTimestamp("reg_date"));
-				
-				System.out.println("rs.next()실행");
 				
 				list.add(goodsVo);
 			}
@@ -305,12 +340,6 @@ public class GoodsDao {
 			pstmt.setInt(4, goodsVo.getNumber());
 			
 			int cnt = pstmt.executeUpdate();
-			
-			System.out.println("goodsVo.getType() : "+goodsVo.getType());
-			System.out.println("goodsVo.getName() : "+goodsVo.getName());
-			System.out.println("goodsVo.getPrice() : "+goodsVo.getPrice());
-			System.out.println("goodsVo.getNumber() : "+goodsVo.getNumber());
-			System.out.println("cnt : "+cnt);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

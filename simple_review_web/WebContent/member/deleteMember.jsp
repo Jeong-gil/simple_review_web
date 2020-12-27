@@ -15,9 +15,25 @@ if (id == null) {
 	return;
 }
 
+//파라미터값 passwd 가져오기
+String passwd = request.getParameter("passwd");
+
 // DAO 객체 준비
 MemberDao memberDao = MemberDao.getInstance();
 GoodsDao goodsDao = GoodsDao.getInstance();
+
+//패스워드 일치여부 확인
+int check = memberDao.userCheck(id, passwd);
+
+if (check == 0) { // 패스워드 불일치
+	%>
+	<script>
+		alert('패스워드 틀림');
+		history.back();
+	</script>
+	<%
+	return;
+}
 
 // 첨부파일 삭제를 위해 GoodsVo를 리스트로 받기 (업로드 위치 알기 위해서)
 List<GoodsVo> goodsVoList = goodsDao.getGoodsBySeller(id);

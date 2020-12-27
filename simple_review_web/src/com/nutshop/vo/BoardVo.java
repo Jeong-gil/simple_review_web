@@ -6,6 +6,7 @@ public class BoardVo {
 
 	private int num;
 	private int goodsNum;
+	private String seller;
 	private String name;
 	private String subject;
 	private String content;
@@ -21,6 +22,9 @@ public class BoardVo {
 	}
 	public int getGoodsNum() {
 		return goodsNum;
+	}
+	public String getSeller() {
+		return seller;
 	}
 	public String getName() {
 		return name;
@@ -55,6 +59,9 @@ public class BoardVo {
 	public void setGoodsNum(int goodsNum) {
 		this.goodsNum = goodsNum;
 	}
+	public void setSeller(String seller) {
+		this.seller = seller;
+	}
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -85,9 +92,9 @@ public class BoardVo {
 	
 	@Override
 	public String toString() {
-		return "BoardVo [num=" + num + ", goodsNum=" + goodsNum + ", name=" + name + ", subject=" + subject
-				+ ", content=" + content + ", readcount=" + readcount + ", regDate=" + regDate + ", file=" + file
-				+ ", reRef=" + reRef + ", reLev=" + reLev + ", reSeq=" + reSeq + "]";
+		return "BoardVo [num=" + num + ", goodsNum=" + goodsNum + ", seller=" + seller + ", name=" + name + ", subject="
+				+ subject + ", content=" + content + ", readcount=" + readcount + ", regDate=" + regDate + ", file="
+				+ file + ", reRef=" + reRef + ", reLev=" + reLev + ", reSeq=" + reSeq + "]";
 	}
 	
 }

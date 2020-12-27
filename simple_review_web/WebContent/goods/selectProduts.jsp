@@ -8,10 +8,15 @@
 // request.setAttribute("price", 999999999);
 request.setCharacterEncoding("utf-8");
 String category =  request.getParameter("category");
+String sort = request.getParameter("sort");
 
 GoodsDao goodsDao = GoodsDao.getInstance();
-List<GoodsVo> goodsList = goodsDao.selectGoods(category);
-
+List<GoodsVo> goodsList = null;
+if (sort == null) {
+	goodsList = goodsDao.selectGoods(category);
+} else {
+	goodsList = goodsDao.selectGoods(category, sort);
+}
 %>
 <!DOCTYPE html>
 <html>
@@ -23,13 +28,13 @@ List<GoodsVo> goodsList = goodsDao.selectGoods(category);
 <body>
 	<jsp:include page="/include/topHeader.jsp" />
 	<div class="product-classification-header">전체상품</div>
-	<div class="ranking-category">최신순 |누적판매순 | 낮은가격순</div>
+	<div class="ranking-category"><a class="basic-board" href="/goods/selectProduts.jsp?category=<%=category %>">최신순</a> |누적판매순 | <a class="basic-board" href="/goods/selectProduts.jsp?category=<%=category %>&sort=lowPrice">낮은가격순</a></div>
 	<div class="container-row">
 	<%
 		for (GoodsVo goodsVo : goodsList) {
 	%>
 	
-		<div class="container-col item cursor-pointer" onclick="location.href='/goods/productDetail.jsp?number=<%=goodsVo.getNumber() %>'">
+		<div class="container-col item cursor-pointer" onclick="location.href='/goods/productDetail.jsp?number=<%=goodsVo.getNumber() %>&seller=<%=goodsVo.getSeller() %>'">
 			<img class="thumbnail-img" alt="test" src="/upload/<%=goodsVo.getUploadpath() %>/<%=goodsVo.getImage() %>">
 			<span class="overflow-text"><%=goodsVo.getName() %></span>
 			<span class="overflow-text"><fmt:formatNumber pattern="#,###원" value="<%=goodsVo.getPrice() %>" /></span>

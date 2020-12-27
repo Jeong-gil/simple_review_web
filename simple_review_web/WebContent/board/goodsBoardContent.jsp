@@ -17,6 +17,7 @@
 	int num = Integer.parseInt(request.getParameter("num")); // 글번호
 	String pageNum = request.getParameter("pageNum"); // 페이지번호
 	int goodsNum = Integer.parseInt(request.getParameter("goodsNum"));
+	String seller = request.getParameter("seller");
 
 	// DAO 객체 준비
 	BoardDao boardDao = BoardDao.getInstance();
@@ -39,7 +40,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/style.css">
-<title>건강 견과류 - 상품 게시판</title>
+<title>건강 견과류 - 글 상세보기</title>
 <style>
 table {
 	width: 600px;
@@ -93,15 +94,27 @@ table {
 			<td colspan="4">
 				<c:if test="${ sessionScope.id eq requestScope.board.name }">
 					<input type="button" value="파일글수정" onclick="location.href='fileUpdateForm.jsp?num=<%=num %>&pageNum=<%=pageNum %>'">
-					<input type="button" value="글수정" onclick="location.href='goodsBoardModifyForm.jsp?goodsNum=<%=goodsNum %>&num=<%=num %>&pageNum=<%=pageNum %>'">
-					<input type="button" value="글삭제" onclick="location.href='deleteForm.jsp?num=<%=num %>&pageNum=<%=pageNum %>'">
+					<input type="button" value="글수정" onclick="location.href='goodsBoardModifyForm.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&num=<%=num %>&pageNum=<%=pageNum %>'">
+					<input type="button" value="글삭제" onclick="contentRemove()">
 				</c:if>
 				<c:if test="${ sessionScope.id eq requestScope.goodsVo.seller }">
-					<input type="button" value="답글쓰기" onclick="location.href='reWriteForm.jsp?reRef=<%=boardVo.getReRef() %>&reLev=<%=boardVo.getReLev() %>&reSeq=<%=boardVo.getReSeq() %>&pageNum=<%=pageNum %>'">
+					<input type="button" value="답글쓰기" onclick="location.href='goodsBoardReplyForm.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&reRef=<%=boardVo.getReRef() %>&reLev=<%=boardVo.getReLev() %>&reSeq=<%=boardVo.getReSeq() %>&pageNum=<%=pageNum %>'">
 				</c:if>
-				<input type="button" value="글목록" onclick="location.href='goodsBoard.jsp?goodsNum=<%=goodsNum %>&pageNum=<%=pageNum %>'">
+				<input type="button" value="글목록" onclick="location.href='goodsBoard.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&pageNum=<%=pageNum %>'">
 			</td>
 		</tr>
 	</table>
+<script>
+	function contentRemove() {
+		let result = confirm('해당 글을 정말 삭제하시겠습니까?');
+		console.log(typeof result);
+		
+		if (result == false) {
+			return;
+		}
+		
+		location.href = '/board/goodsBoardDelete.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&num=<%=boardVo.getNum() %>&pageNum=<%=pageNum %>';
+	}
+</script>
 </body>
 </html>
