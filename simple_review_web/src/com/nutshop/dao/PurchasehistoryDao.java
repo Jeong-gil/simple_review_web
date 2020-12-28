@@ -2,6 +2,9 @@ package com.nutshop.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.nutshop.vo.GoodsVo;
 import com.nutshop.vo.PurchasehistoryVo;
@@ -43,6 +46,44 @@ public class PurchasehistoryDao {
 		} finally {
 			JdbcUtils.close(con, pstmt);
 		}
+	}
+	
+	public List<PurchasehistoryVo> getPurchasehistory(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<PurchasehistoryVo> phistoryList = new ArrayList<>();
+		String sql  = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			
+			sql = "SELECT * FROM purchasehistory "
+					+ "WHERE buyer = ? ORDER BY reg_date DESC";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				PurchasehistoryVo purchasehistoryVo = new PurchasehistoryVo();
+				purchasehistoryVo.setNum(rs.getInt("num"));
+				purchasehistoryVo.setBuyer(rs.getString("buyer"));
+				purchasehistoryVo.setProduct(rs.getString("product"));
+				purchasehistoryVo.setQuantity(rs.getInt("quantity"));
+				purchasehistoryVo.setRegDate(rs.getTimestamp("reg_date"));
+				
+				phistoryList.add(purchasehistoryVo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt, rs);
+		}
+		return phistoryList;
 	}
 	
 }

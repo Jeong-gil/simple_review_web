@@ -28,7 +28,7 @@ if (sort == null) {
 <body>
 	<jsp:include page="/include/topHeader.jsp" />
 	<div class="product-classification-header">전체상품</div>
-	<div class="ranking-category"><a class="basic-board" href="/goods/allproducts.jsp">최신순</a> | <a class="basic-board" href="/goods/allproducts.jsp?sort=highSales">누적판매순</a> | <a class="basic-board" href="/goods/allproducts.jsp?sort=lowPrice">낮은가격순</a></div>
+	<div class="ranking-category"><a href="/goods/allproducts.jsp">최신순</a> | <a href="/goods/allproducts.jsp?sort=highSales">누적판매순</a> | <a href="/goods/allproducts.jsp?sort=lowPrice">낮은가격순</a></div>
 	<div class="container-row chage-category">
 	<%
 		for (GoodsVo goodsVo : goodsList) {

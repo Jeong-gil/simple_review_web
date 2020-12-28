@@ -94,13 +94,12 @@ a.active {
 	<h1>글목록 (전체글갯수: <%=count%>)</h1>
 	<hr>
 	<c:if test="${ sessionScope.id ne null }">
-		<h3><a href="/board/goodsBoardWriteForm.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&pageNum=<%=pageNum%>">글쓰기</a></h3>
-		<h3><a href="#?pageNum=<%=pageNum%>">파일 글쓰기</a></h3>
+		<input class="purchase-button" type="button" value="글쓰기" style="margin: 20px 0px 10px 0px;" onclick="location.href='/board/goodsBoardWriteForm.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&pageNum=<%=pageNum%>'">
 	</c:if>
-	<table border="1">
+	<table border="1" style="width: 1100px; text-align: center;">
 		<thead>
 			<tr>
-				<th>번호</th><th class="subject">제목</th><th>작성자</th><th>작성일</th><th>조회</th>
+				<th>번호</th><th style="width: 500px;">제목</th><th>작성자</th><th style="width: 200px;">작성일</th><th>조회</th>
 			</tr>
 		</thead>
 		<tbody>

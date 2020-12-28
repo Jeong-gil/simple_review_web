@@ -20,31 +20,6 @@ GoodsVo goodsVo = goodsDao.getGoodsBynumber(number);
 </head>
 <body>
 	<jsp:include page="/include/topHeader.jsp" />
-<!-- 	<div class="container-row"> -->
-<!-- 		<fieldset style="margin-top: 10px; margin-bottom: 20px; width: 250px;"> -->
-<!-- 			<legend>상품 이미지</legend> -->
-<%--         	<img style="width: 700px; height: 700px" alt="test" src="/upload/<%=goodsVo.getUploadpath() %>/<%=goodsVo.getImage() %>"> --%>
-<!--         </fieldset> -->
-<!--         <div class="container-col"> -->
-<%--         	<input type="hidden" name="number" value="<%=number %>"> --%>
-<!-- 			<fieldset style="margin-top: 10px; margin-bottom: 20px; width: 250px;"> -->
-<!-- 				<legend>상품명</legend> -->
-<%-- 	        	<h1><%=goodsVo.getName() %></h1> --%>
-<!-- 	        </fieldset> -->
-<!-- 	        <fieldset style="margin-top: 10px; margin-bottom: 20px; width: 250px;"> -->
-<!-- 				<legend>상품가격</legend> -->
-<%-- 	        	<h1><fmt:formatNumber pattern="#,###원" value="<%=goodsVo.getPrice() %>" /></h1> --%>
-<!-- 	        </fieldset> -->
-<!-- 			<fieldset style="margin-top: 10px; margin-bottom: 20px; width: 250px;"> -->
-<!-- 	        	<legend>상품 카테고리</legend> -->
-<%-- 	        	<h3><%=goodsVo.getType() %></h3> --%>
-<!-- 	        </fieldset> -->
-<!-- 	        <fieldset style="margin-top: 10px; margin-bottom: 20px; width: 250px;"> -->
-<!-- 	        	<legend>상품 게시판</legend> -->
-<%-- 	        	<h3 onclick="location.href='/board/goodsBoard.jsp?goodsNum=<%=number %>&seller=<%=seller %>'" style="cursor: pointer;"><a>상품 게시판</a></h3> --%>
-<!-- 	        </fieldset> -->
-<!--         </div> -->
-<!-- 	</div> -->
 	<h2>상품 상세정보</h2>
 	<div class="container-col">
 		<table>
@@ -64,16 +39,21 @@ GoodsVo goodsVo = goodsDao.getGoodsBynumber(number);
 						</tr>
 						<tr align="center">
 							<td colspan="2">
-								<form action="productBuyAction.jsp" method="post">
+								<form action="/goods/productBuyAction.jsp" method="post">
 									<input type="hidden" name="number" value="<%=goodsVo.getNumber() %>">
 									<input type="hidden" name="seller" value="<%=seller %>">
-									<select name="amount">
+									<select name="amount" style="height: 30px;">
 										<c:forEach begin="1" end="10" var="i">
 											<option value="${i}">${i}</option>
 										</c:forEach>
 									</select>&nbsp;개
-									<input type="submit" value="구매하기">
+									<input class="purchase-button" type="submit" value="구매하기">
 								</form>
+							</td>
+						</tr>
+						<tr align="center">
+							<td colspan="2">
+								<input class="purchase-button" type="button" value="Q & A" onclick="location.href='/board/goodsBoard.jsp?goodsNum=<%=number %>&seller=<%=seller %>'">
 							</td>
 						</tr>
 					</table>

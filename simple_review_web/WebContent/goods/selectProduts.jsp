@@ -4,11 +4,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 // request.setAttribute("price", 999999999);
 request.setCharacterEncoding("utf-8");
 String category =  request.getParameter("category");
 String sort = request.getParameter("sort");
+
+pageContext.setAttribute("category", category);
 
 GoodsDao goodsDao = GoodsDao.getInstance();
 List<GoodsVo> goodsList = null;
@@ -27,8 +30,19 @@ if (sort == null) {
 </head>
 <body>
 	<jsp:include page="/include/topHeader.jsp" />
-	<div class="product-classification-header">전체상품</div>
-	<div class="ranking-category"><a class="basic-board" href="/goods/selectProduts.jsp?category=<%=category %>">최신순</a> | <a class="basic-board" href="/goods/selectProduts.jsp?category=<%=category %>&sort=highSales">누적판매순</a> | <a class="basic-board" href="/goods/selectProduts.jsp?category=<%=category %>&sort=lowPrice">낮은가격순</a></div>
+	<c:choose>
+		<c:when test="${ pageScope.category eq '견과류' }">
+			<div class="product-classification-header">견과류</div>
+		</c:when>
+		<c:when test="${ pageScope.category eq '건과류' }">
+			<div class="product-classification-header">건과류</div>
+		</c:when>
+		<c:otherwise>
+			<div class="product-classification-header">씨앗</div>
+		</c:otherwise>
+	</c:choose>
+	
+	<div class="ranking-category"><a href="/goods/selectProduts.jsp?category=<%=category %>">최신순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=highSales">누적판매순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=lowPrice">낮은가격순</a></div>
 	<div class="container-row">
 	<%
 		for (GoodsVo goodsVo : goodsList) {

@@ -14,7 +14,7 @@ String seller = request.getParameter("seller");
 </head>
 <body>
 <script type="text/javascript">
-alert('로그인 후 접근하실 수 있습니다.');
+alert('로그인 후 구매하실 수 있습니다.');
 location.href = '/goods/productDetail.jsp?number=<%=number %>&seller=<%=seller %>';
 </script>
 </body>

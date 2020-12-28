@@ -16,9 +16,15 @@ if (id != null) {
 <title>건강 견과류 - 회원가입</title>
 </head>
 <body>
-	<header class="main-teme">
-		<h1 ><a href="/index.jsp">로고</a></h1>
+	<header class="main-teme" style="margin-top: 40px;">
+		<a href="/index.jsp"><img alt="" src="/images/baseline_storefront_black_48dp.png"></a>
 	</header>
+	<nav class="main-navi container-row2">
+		<a href="/goods/selectProduts.jsp?category=건과류">건과류</a>
+		<a href="/goods/selectProduts.jsp?category=견과류">견과류</a>
+		<a href="/goods/selectProduts.jsp?category=씨앗">씨앗</a>
+		<a href="/goods/allproducts.jsp">전체상품</a>
+	</nav>
 	<div class="container-col-login">
 		<form id="frm" action="joinAction.jsp" method="post" onsubmit="return submitCheck();">
 			<input class="login-input id" type="text" name="id" placeholder="아이디" required>

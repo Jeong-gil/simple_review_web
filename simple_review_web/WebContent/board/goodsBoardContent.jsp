@@ -6,18 +6,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-	//로그인 여부 확인
-	String id = (String) session.getAttribute("id");
-	if (id == null) {
-		response.sendRedirect("/board/alert.jsp");
-		return;
-	}
-
 	// 파라미터값 가져오기
 	int num = Integer.parseInt(request.getParameter("num")); // 글번호
 	String pageNum = request.getParameter("pageNum"); // 페이지번호
 	int goodsNum = Integer.parseInt(request.getParameter("goodsNum"));
 	String seller = request.getParameter("seller");
+	
+	//로그인 여부 확인
+		String id = (String) session.getAttribute("id");
+		if (id == null) {
+			response.sendRedirect("/board/alert.jsp?goodsNum="+ goodsNum +"&seller=" + seller + "&pageNum=" + pageNum);
+			return;
+		}
 
 	// DAO 객체 준비
 	BoardDao boardDao = BoardDao.getInstance();
@@ -51,7 +51,7 @@ table {
 	<jsp:include page="/include/topHeader.jsp" />
 	<h1>글내용 보기</h1>
 	<hr>
-	<table border="1">
+	<table border="1" style="width: 1100px;">
 		<tr>
 <%-- 			<th>글번호</th><td><%=boardVo.getNum() %></td> --%>
 			<th>글번호</th><td>${ requestScope.board.num }</td>
@@ -65,35 +65,11 @@ table {
 			<th>글제목</th><td colspan="3">${ requestScope.board.subject }</td>
 		</tr>
 		<tr>
-			<th>파일</th>
-			<td colspan="3">
-				<%
-				if (boardVo.getFile() != null) {
-					String filename = boardVo.getFile();
-					%>
-					<a href="../upload/${ requestScope.board.file }">${ requestScope.board.file }</a>
-					<%
-					if (filename.endsWith("jpg") || filename.endsWith("jpeg") 
-							|| filename.endsWith("gif") || filename.endsWith("png")) {
-						%>
-						<br>
-						<img src="../upload/${ requestScope.board.file }" width="100" height="100">
-						<%
-					}
-				}
-				%>
-<%-- 				<c:if test="${ requestScope.board.file ne null }"> --%>
-<%-- 					<a href="../upload/${ requestScope.board.file }">${ requestScope.board.file }</a> --%>
-<%-- 				</c:if> --%>
-			</td>
-		</tr>
-		<tr>
 			<th>글내용</th><td colspan="3"><pre>${ requestScope.board.content }</pre></td>
 		</tr>
 		<tr>
-			<td colspan="4">
+			<td colspan="4" style="text-align: right;">
 				<c:if test="${ sessionScope.id eq requestScope.board.name }">
-					<input type="button" value="파일글수정" onclick="location.href='fileUpdateForm.jsp?num=<%=num %>&pageNum=<%=pageNum %>'">
 					<input type="button" value="글수정" onclick="location.href='goodsBoardModifyForm.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&num=<%=num %>&pageNum=<%=pageNum %>'">
 					<input type="button" value="글삭제" onclick="contentRemove()">
 				</c:if>

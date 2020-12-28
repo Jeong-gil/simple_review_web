@@ -8,20 +8,27 @@ html {
 	border: 1px solid green;
 }
 
+.right-space {
+	margin-right: 30px;
+}
+
 .main-teme {
-	border: 1px solid green;
 	padding: 50px;
 	text-align: center;
+	min-width: 600px;
+	background-color: #ffd66b
 }
 
 .main-navi {
-	border: 1px solid green;
 	padding: 30px;
 	text-align: center;
+	min-width: 640px;
+	font-size: larger;
+	background-color: #f1ae89;
 }
 
 .cursor-pointer {
-	border: 1px solid green;
+	border: 1px solid gray;
 	cursor: pointer;
 }
 
@@ -57,12 +64,19 @@ a:hover {
 /* 	align-items: center; */
 }
 
+.container-row2 {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
 .item {
 	width: 250px;
 	height: 350px;
 	margin: 20px 10px;
-	border: 1px solid green;
-	background: pink;
+/* 	border: 1px solid green; */
+	background: #f1ae89;
 }
 
 .thumbnail-img {
@@ -83,16 +97,18 @@ a:hover {
 }
 
 .background-img {
-	height: 100vh;
-	background-image: url("/images/mixed-1938302_1920.jpg");
+	background-image: url("/images/mixed-1938302_1920_3.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
+	height: 500px;
+	min-width: 700px;
 }
 
 .right-text {
 	text-align: right;
 	padding: 10px 0px;
+	min-width: 700px;
 }
 
 .product-classification-header {
@@ -132,4 +148,10 @@ a:hover {
 .input-float-right {
 	float: right;
 	margin-left: 10px;
+}
+
+.purchase-button {
+	width: 100px;
+	height: 30px;
+	font-size: larger;
 }
