@@ -101,6 +101,8 @@ public class GoodsDao {
 			
 			if (sort.equals("lowPrice")) {
 				sql = "SELECT * FROM goods ORDER BY price, number DESC";
+			} else if (sort.equals("highSales")) {
+				sql = "SELECT * FROM goods ORDER BY sales_rate DESC, number DESC";
 			}
 			
 			pstmt = con.prepareStatement(sql);
@@ -180,6 +182,8 @@ public class GoodsDao {
 			
 			if (sort.equals("lowPrice")) {
 				sql = "SELECT * FROM goods WHERE type = ? ORDER BY price, number DESC";
+			} else if (sort.equals("highSales")) {
+				sql = "SELECT * FROM goods WHERE type = ? ORDER BY sales_rate DESC, number DESC";
 			}
 			
 			pstmt = con.prepareStatement(sql);
