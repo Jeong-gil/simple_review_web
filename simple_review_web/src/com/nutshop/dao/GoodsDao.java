@@ -29,16 +29,17 @@ public class GoodsDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			sql = "INSERT INTO goods (seller, type, name, price, image, uploadpath, reg_date) "
-					+ "VALUES (?, ?, ?, ?, ?, ?, now())";
+			sql = "INSERT INTO goods (seller, type, name, introduction, price, image, uploadpath, reg_date) "
+					+ "VALUES (?, ?, ?, ?, ?, ?, ?, now())";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, goodsVo.getSeller());
 			pstmt.setString(2, goodsVo.getType());
 			pstmt.setString(3, goodsVo.getName());
-			pstmt.setInt(4, goodsVo.getPrice());
-			pstmt.setString(5, goodsVo.getImage());
-			pstmt.setString(6, goodsVo.getUploadpath());
+			pstmt.setString(4, goodsVo.getIntroduction());
+			pstmt.setInt(5, goodsVo.getPrice());
+			pstmt.setString(6, goodsVo.getImage());
+			pstmt.setString(7, goodsVo.getUploadpath());
 			
 			pstmt.executeUpdate();
 			
@@ -72,6 +73,7 @@ public class GoodsDao {
 				goodsVo.setSeller(rs.getString("seller"));
 				goodsVo.setType(rs.getString("type"));
 				goodsVo.setName(rs.getString("name"));
+				goodsVo.setIntroduction(rs.getString("introduction"));
 				goodsVo.setPrice(rs.getInt("price"));
 				goodsVo.setSalesRate(rs.getInt("sales_rate"));
 				goodsVo.setImage(rs.getString("image"));
@@ -114,6 +116,7 @@ public class GoodsDao {
 				goodsVo.setSeller(rs.getString("seller"));
 				goodsVo.setType(rs.getString("type"));
 				goodsVo.setName(rs.getString("name"));
+				goodsVo.setIntroduction(rs.getString("introduction"));
 				goodsVo.setPrice(rs.getInt("price"));
 				goodsVo.setSalesRate(rs.getInt("sales_rate"));
 				goodsVo.setImage(rs.getString("image"));
@@ -153,6 +156,7 @@ public class GoodsDao {
 				goodsVo.setSeller(rs.getString("seller"));
 				goodsVo.setType(rs.getString("type"));
 				goodsVo.setName(rs.getString("name"));
+				goodsVo.setIntroduction(rs.getString("introduction"));
 				goodsVo.setPrice(rs.getInt("price"));
 				goodsVo.setSalesRate(rs.getInt("sales_rate"));
 				goodsVo.setImage(rs.getString("image"));
@@ -195,6 +199,7 @@ public class GoodsDao {
 				goodsVo.setSeller(rs.getString("seller"));
 				goodsVo.setType(rs.getString("type"));
 				goodsVo.setName(rs.getString("name"));
+				goodsVo.setIntroduction(rs.getString("introduction"));
 				goodsVo.setPrice(rs.getInt("price"));
 				goodsVo.setSalesRate(rs.getInt("sales_rate"));
 				goodsVo.setImage(rs.getString("image"));
@@ -234,6 +239,7 @@ public class GoodsDao {
 				goodsVo.setSeller(rs.getString("seller"));
 				goodsVo.setType(rs.getString("type"));
 				goodsVo.setName(rs.getString("name"));
+				goodsVo.setIntroduction(rs.getString("introduction"));
 				goodsVo.setPrice(rs.getInt("price"));
 				goodsVo.setSalesRate(rs.getInt("sales_rate"));
 				goodsVo.setImage(rs.getString("image"));
@@ -277,6 +283,7 @@ public class GoodsDao {
 				goodsVo.setSeller(rs.getString("seller"));
 				goodsVo.setType(rs.getString("type"));
 				goodsVo.setName(rs.getString("name"));
+				goodsVo.setIntroduction(rs.getString("introduction"));
 				goodsVo.setPrice(rs.getInt("price"));
 				goodsVo.setSalesRate(rs.getInt("sales_rate"));
 				goodsVo.setImage(rs.getString("image"));
@@ -319,6 +326,7 @@ public class GoodsDao {
 				goodsVo.setSeller(rs.getString("seller"));
 				goodsVo.setType(rs.getString("type"));
 				goodsVo.setName(rs.getString("name"));
+				goodsVo.setIntroduction(rs.getString("introduction"));
 				goodsVo.setPrice(rs.getInt("price"));
 				goodsVo.setSalesRate(rs.getInt("sales_rate"));
 				goodsVo.setImage(rs.getString("image"));
@@ -358,6 +366,7 @@ public class GoodsDao {
 				goodsVo.setSeller(rs.getString("seller"));
 				goodsVo.setType(rs.getString("type"));
 				goodsVo.setName(rs.getString("name"));
+				goodsVo.setIntroduction(rs.getString("introduction"));
 				goodsVo.setPrice(rs.getInt("price"));
 				goodsVo.setSalesRate(rs.getInt("sales_rate"));
 				goodsVo.setImage(rs.getString("image"));
@@ -396,6 +405,7 @@ public class GoodsDao {
 				goodsVo.setSeller(rs.getString("seller"));
 				goodsVo.setType(rs.getString("type"));
 				goodsVo.setName(rs.getString("name"));
+				goodsVo.setIntroduction(rs.getString("introduction"));
 				goodsVo.setPrice(rs.getInt("price"));
 				goodsVo.setSalesRate(rs.getInt("sales_rate"));
 				goodsVo.setImage(rs.getString("image"));
@@ -422,16 +432,17 @@ public class GoodsDao {
 			con = JdbcUtils.getConnection();
 			
 			sql  = "UPDATE goods ";
-			sql += "SET type = ?, name = ?, price = ? ";
+			sql += "SET type = ?, name = ?, introduction = ?, price = ? ";
 			sql += "WHERE number = ? ";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, goodsVo.getType());
 			pstmt.setString(2, goodsVo.getName());
-			pstmt.setInt(3, goodsVo.getPrice());
-			pstmt.setInt(4, goodsVo.getNumber());
+			pstmt.setString(3, goodsVo.getIntroduction());
+			pstmt.setInt(4, goodsVo.getPrice());
+			pstmt.setInt(5, goodsVo.getNumber());
 			
-			int cnt = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();

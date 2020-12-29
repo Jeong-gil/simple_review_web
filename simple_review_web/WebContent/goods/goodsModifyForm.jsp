@@ -35,6 +35,10 @@ GoodsVo goodsVo = goodsDao.getGoodsBynumber(number);
 				<legend>상품가격</legend>
 	        	<input class="login-input" type="text" name="price" value="<%=goodsVo.getPrice() %>" placeholder="상품가격" required style="width: 230px;">
 	        </fieldset>
+	        <fieldset style="margin-top: 10px; margin-bottom: 20px;">
+		        <legend>상품설명</legend>
+		        <textarea cols="33" rows="16" name="introduction" placeholder="상품설명" required><%=goodsVo.getIntroduction() %></textarea>
+	        </fieldset>
 			<fieldset style="margin-top: 10px; margin-bottom: 20px; width: 250px;">
 				<legend>상품 이미지</legend>
 	        	<img class="thumbnail-img" alt="test" src="/upload/<%=goodsVo.getUploadpath() %>/<%=goodsVo.getImage() %>">

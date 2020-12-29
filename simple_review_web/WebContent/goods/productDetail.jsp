@@ -10,6 +10,10 @@ String seller = request.getParameter("seller");
 
 GoodsDao goodsDao = GoodsDao.getInstance();
 GoodsVo goodsVo = goodsDao.getGoodsBynumber(number);
+
+// 판매자 자기 자신 상품 구매 못하도록 막기 위한 변수 등록
+String sellerIdenti = goodsVo.getSeller();
+pageContext.setAttribute("sellerIdenti", sellerIdenti);
 %>
 <!DOCTYPE html>
 <html>
@@ -39,16 +43,23 @@ GoodsVo goodsVo = goodsDao.getGoodsBynumber(number);
 						</tr>
 						<tr align="center">
 							<td colspan="2">
-								<form action="/goods/productBuyAction.jsp" method="post">
-									<input type="hidden" name="number" value="<%=goodsVo.getNumber() %>">
-									<input type="hidden" name="seller" value="<%=seller %>">
-									<select name="amount" style="height: 30px;">
-										<c:forEach begin="1" end="10" var="i">
-											<option value="${i}">${i}</option>
-										</c:forEach>
-									</select>&nbsp;개
-									<input class="purchase-button" type="submit" value="구매하기">
-								</form>
+								<c:choose>
+									<c:when test="${ pageScope.sellerIdenti eq sessionScope.id }">
+										<h3 style="color: #111d5e">내 상품은<br>판매중인 상품에 가시면<br>수정하실 수 있습니다</h3>
+									</c:when>
+									<c:otherwise>
+										<form action="/goods/productBuyAction.jsp" method="post">
+											<input type="hidden" name="number" value="<%=goodsVo.getNumber() %>">
+											<input type="hidden" name="seller" value="<%=seller %>">
+											<select name="amount" style="height: 30px;">
+												<c:forEach begin="1" end="10" var="i">
+													<option value="${i}">${i}</option>
+												</c:forEach>
+											</select>&nbsp;개
+											<input class="purchase-button" type="submit" value="구매하기">
+										</form>		
+									</c:otherwise>
+								</c:choose>
 							</td>
 						</tr>
 						<tr align="center">

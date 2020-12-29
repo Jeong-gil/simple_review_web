@@ -22,6 +22,7 @@ if (id == null) {
 			<input type="hidden" name="seller" value="${ sessionScope.id }">
 			<input class="login-input" type="text" name="name" placeholder="상품명" required><br>
 			<input class="login-input" type="number" name="price" placeholder="상품가격" required><br>
+			<textarea style="margin-top: 10px;" cols="36" rows="16" name="introduction" placeholder="상품설명" required></textarea><br>
 			<fieldset style="margin-top: 10px; margin-bottom: 20px; width: 250px;">
 	        	<legend>상품 이미지</legend>
 	        	<input type="file" accept=".jpeg, .jpg, .png" name="image" required>

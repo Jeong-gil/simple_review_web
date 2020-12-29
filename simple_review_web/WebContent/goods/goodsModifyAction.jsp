@@ -15,14 +15,10 @@ if (id == null) {
 GoodsDao goodsDao = GoodsDao.getInstance();
 GoodsVo goodsVo = new GoodsVo();
 
-System.out.println("number : "+request.getParameter("number"));
-System.out.println("name : "+request.getParameter("name"));
-System.out.println("price : "+request.getParameter("price"));
-System.out.println("type : "+request.getParameter("type"));
-
 goodsVo.setNumber(Integer.parseInt(request.getParameter("number")));
 goodsVo.setName(request.getParameter("name"));
 goodsVo.setPrice(Integer.parseInt(request.getParameter("price")));
+goodsVo.setIntroduction(request.getParameter("introduction"));
 goodsVo.setType(request.getParameter("type"));
 
 goodsDao.modifiGoods(goodsVo);

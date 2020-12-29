@@ -36,6 +36,7 @@ GoodsVo goodsVo = new GoodsVo();
 // 파라미터값 가져와서 VO에 저장. MultipartRequest 로부터 찾음.
 goodsVo.setSeller(multi.getParameter("seller"));
 goodsVo.setName(multi.getParameter("name"));
+goodsVo.setIntroduction(multi.getParameter("introduction"));
 goodsVo.setPrice(Integer.parseInt(multi.getParameter("price")));
 goodsVo.setType(multi.getParameter("type"));
 goodsVo.setUploadpath(strDate);
