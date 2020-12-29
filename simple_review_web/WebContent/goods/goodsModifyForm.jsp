@@ -51,7 +51,19 @@ GoodsVo goodsVo = goodsDao.getGoodsBynumber(number);
 			<input class="input-submit" type="submit" value="상품수정">
 			<input class="input-float-right" type="button" value="취소" onclick="location.href='/goods/myProducts.jsp'">
 			<input class="input-float-right" type="reset" value="초기화">
+			<input class="input-float-right del-product" type="button" value="상품삭제">
 		</form>
 	</div>
 </body>
+<script src="/js/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+	$('.del-product').click(function () {
+		var isRemove = confirm('정말 상품을 삭제하시겠습니까?');
+		if (!isRemove) {
+			return false;
+		} else {
+			location.href = '/goods/deleteMyGoodsAction.jsp?number=<%=number %>';
+		}
+	});
+</script>
 </html>

@@ -466,4 +466,26 @@ public class GoodsDao {
 		}
 	}
 	
+	public void deleteMyGoods(int number) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			sql = "DELETE FROM goods WHERE number = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, number);
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt);
+		}
+	}
+	
 }
