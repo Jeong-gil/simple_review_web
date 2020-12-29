@@ -10,6 +10,7 @@
 request.setCharacterEncoding("utf-8");
 String category =  request.getParameter("category");
 String sort = request.getParameter("sort");
+pageContext.setAttribute("sort", sort);
 
 pageContext.setAttribute("category", category);
 
@@ -42,7 +43,18 @@ if (sort == null) {
 		</c:otherwise>
 	</c:choose>
 	
-	<div class="ranking-category"><a href="/goods/selectProduts.jsp?category=<%=category %>">최신순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=highSales">누적판매순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=lowPrice">낮은가격순</a></div>
+	<c:choose>
+		<c:when test="${ pageScope.sort eq 'highSales' }">
+			<div class="ranking-category"><a href="/goods/selectProduts.jsp?category=<%=category %>">최신순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=highSales" style="font-weight: bolder;">누적판매순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=lowPrice">낮은가격순</a></div>
+		</c:when>
+		<c:when test="${ pageScope.sort eq 'lowPrice' }">
+			<div class="ranking-category"><a href="/goods/selectProduts.jsp?category=<%=category %>">최신순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=highSales">누적판매순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=lowPrice">낮은가격순</a></div>
+		</c:when>
+		<c:otherwise>
+			<div class="ranking-category"><a href="/goods/selectProduts.jsp?category=<%=category %>" style="font-weight: bolder;">최신순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=highSales">누적판매순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=lowPrice">낮은가격순</a></div>
+		</c:otherwise>
+	</c:choose>
+	
 	<div class="container-row">
 	<%
 		for (GoodsVo goodsVo : goodsList) {
