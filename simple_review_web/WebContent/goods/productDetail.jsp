@@ -34,12 +34,16 @@ pageContext.setAttribute("sellerIdenti", sellerIdenti);
 				<td>
 					<table border="1" style="width: 550px; height: 200px;">
 						<tr align="center">
-							<td style="width: 100px;">상품명</td>
-							<td><%=goodsVo.getName() %></td>
+							<td style="width: 100px; background: #e7d9ea;">상품명</td>
+							<td style="font-size: 25px;"><%=goodsVo.getName() %></td>
 						</tr>
 						<tr align="center">
-							<td style="width: 100px;">가격</td>
-							<td><fmt:formatNumber pattern="#,###원" value="<%=goodsVo.getPrice() %>" /></td>
+							<td style="width: 100px; background: #e7d9ea;">가격</td>
+							<td style="font-size: 25px;"><fmt:formatNumber pattern="#,###원" value="<%=goodsVo.getPrice() %>" /></td>
+						</tr>
+						<tr align="center">
+							<td style="width: 100px; background: #e7d9ea;">상품설명</td>
+							<td><%=goodsVo.getIntroduction() %></td>
 						</tr>
 						<tr align="center">
 							<td colspan="2">
