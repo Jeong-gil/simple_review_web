@@ -130,6 +130,87 @@ public class GoodsDao {
 		return goodsList;
 	}
 	
+	public List<GoodsVo> searchGoods(String word) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<GoodsVo> goodsList = new ArrayList<>();
+		String sql  = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			
+			sql = "SELECT * FROM goods WHERE name LIKE '%" + word + "%' ORDER BY reg_date DESC";
+			
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				GoodsVo goodsVo = new GoodsVo();
+				goodsVo.setNumber(rs.getInt("number"));
+				goodsVo.setSeller(rs.getString("seller"));
+				goodsVo.setType(rs.getString("type"));
+				goodsVo.setName(rs.getString("name"));
+				goodsVo.setPrice(rs.getInt("price"));
+				goodsVo.setSalesRate(rs.getInt("sales_rate"));
+				goodsVo.setImage(rs.getString("image"));
+				goodsVo.setUploadpath(rs.getString("uploadpath"));
+				goodsVo.setRegDate(rs.getTimestamp("reg_date"));
+				
+				goodsList.add(goodsVo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt, rs);
+		}
+		return goodsList;
+	}
+	
+	public List<GoodsVo> searchGoods(String word, String sort) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<GoodsVo> goodsList = new ArrayList<>();
+		String sql  = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			if (sort.equals("lowPrice")) {
+				sql = "SELECT * FROM goods WHERE name LIKE '%" + word + "%' ORDER BY price, reg_date DESC";
+			} else if (sort.equals("highSales")) {
+				sql = "SELECT * FROM goods WHERE name LIKE '%" + word + "%' ORDER BY sales_rate DESC, reg_date DESC";
+			}
+			
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				GoodsVo goodsVo = new GoodsVo();
+				goodsVo.setNumber(rs.getInt("number"));
+				goodsVo.setSeller(rs.getString("seller"));
+				goodsVo.setType(rs.getString("type"));
+				goodsVo.setName(rs.getString("name"));
+				goodsVo.setPrice(rs.getInt("price"));
+				goodsVo.setSalesRate(rs.getInt("sales_rate"));
+				goodsVo.setImage(rs.getString("image"));
+				goodsVo.setUploadpath(rs.getString("uploadpath"));
+				goodsVo.setRegDate(rs.getTimestamp("reg_date"));
+				
+				goodsList.add(goodsVo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt, rs);
+		}
+		return goodsList;
+	}
+	
 	public List<GoodsVo> selectGoods(String selectGoods) {
 		Connection con = null;
 		PreparedStatement pstmt = null;

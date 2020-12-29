@@ -26,4 +26,10 @@
 		<a href="/goods/selectProduts.jsp?category=견과류">견과류</a>
 		<a href="/goods/selectProduts.jsp?category=씨앗">씨앗</a>
 		<a href="/goods/allproducts.jsp">전체상품</a>
+		<form action="/goods/searchProducts.jsp">
+			<div class="search-container">
+				<input class="search-box" name="word" placeholder="검색어">
+				<input class="search-button" type="submit" value="검색">
+			</div>
+		</form>
 	</nav>

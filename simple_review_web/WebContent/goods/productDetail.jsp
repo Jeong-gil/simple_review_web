@@ -30,11 +30,11 @@ GoodsVo goodsVo = goodsDao.getGoodsBynumber(number);
 				<td>
 					<table border="1" style="width: 550px; height: 200px;">
 						<tr align="center">
-							<td>상품명</td>
+							<td style="width: 100px;">상품명</td>
 							<td><%=goodsVo.getName() %></td>
 						</tr>
 						<tr align="center">
-							<td>가격</td>
+							<td style="width: 100px;">가격</td>
 							<td><fmt:formatNumber pattern="#,###원" value="<%=goodsVo.getPrice() %>" /></td>
 						</tr>
 						<tr align="center">

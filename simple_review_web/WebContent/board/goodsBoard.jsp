@@ -96,7 +96,7 @@ a.active {
 	<c:if test="${ sessionScope.id ne null }">
 		<input class="purchase-button" type="button" value="글쓰기" style="margin: 20px 0px 10px 0px;" onclick="location.href='/board/goodsBoardWriteForm.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&pageNum=<%=pageNum%>'">
 	</c:if>
-	<table border="1" style="width: 1100px; text-align: center;">
+	<table style="width: 1100px; text-align: center;">
 		<thead>
 			<tr>
 				<th>번호</th><th style="width: 500px;">제목</th><th>작성자</th><th style="width: 200px;">작성일</th><th>조회</th>
