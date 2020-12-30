@@ -91,15 +91,15 @@ a.active {
 </head>
 <body>
 	<jsp:include page="/include/topHeader.jsp" />
-	<h1>글목록 (전체글갯수: <%=count%>)</h1>
-	<hr>
+	<h1 style="min-width: 600px;">글목록 (전체글갯수: <%=count%>)</h1>
+	<hr style="min-width: 600px;">
 	<c:if test="${ sessionScope.id ne null }">
 		<input class="purchase-button" type="button" value="글쓰기" style="margin: 20px 0px 10px 0px;" onclick="location.href='/board/goodsBoardWriteForm.jsp?goodsNum=<%=goodsNum %>&seller=<%=seller %>&pageNum=<%=pageNum%>'">
 	</c:if>
 	<table style="width: 1100px; text-align: center;">
 		<thead>
 			<tr>
-				<th>번호</th><th style="width: 500px;">제목</th><th>작성자</th><th style="width: 200px;">작성일</th><th>조회</th>
+				<th style="background: #e7d9ea">번호</th><th style="width: 500px; background: #e7d9ea">제목</th><th style="background: #e7d9ea">작성자</th><th style="width: 200px; background: #e7d9ea">작성일</th><th style="background: #e7d9ea">조회</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -137,6 +137,7 @@ a.active {
 		</tbody>
 	</table>
 	
+	<div style="text-align: center; min-width: 600px; margin: 30px 0px;">
 	<%
 	// 글갯수가 0보다 크면 페이지블록 계산해서 출력하기
 	if (count > 0) {
@@ -169,5 +170,6 @@ a.active {
 		}
 	}
 	%>
+	</div>
 </body>
 </html>

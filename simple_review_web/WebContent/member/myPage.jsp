@@ -65,8 +65,8 @@ pageContext.setAttribute("gender", gender);
 				</c:otherwise>
 			</c:choose>
 			<input class="input-submit" type="submit" value="회원수정">
-			<input class="input-float-right" type="button" value="취소" onclick="location.href='/index.jsp'">
-			<input class="input-float-right" type="reset" value="초기화">
+			<input class="input-float-right cancel-btn" type="button" value="취소" onclick="location.href='/index.jsp'">
+			<input class="input-float-right reset-btn" type="reset" value="초기화">
 			<input class="input-float-right del-member" type="button" value="회원탈퇴">
 		</form>
 	</div>

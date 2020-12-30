@@ -36,8 +36,8 @@ if (id == null) {
 				</select>
 	        </fieldset>
 			<input class="input-submit" type="submit" value="상품등록">
-			<input class="input-float-right" type="button" value="취소" onclick="location.href='/goods/myProducts.jsp'">
-			<input class="input-float-right" type="reset" value="초기화">
+			<input class="input-float-right cancel-btn" type="button" value="취소" onclick="location.href='/goods/myProducts.jsp'">
+			<input class="input-float-right reset-btn" type="reset" value="초기화">
 		</form>
 	</div>
 </body>

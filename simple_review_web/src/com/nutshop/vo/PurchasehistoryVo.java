@@ -9,6 +9,7 @@ public class PurchasehistoryVo {
 	private String product;
 	private int quantity;
 	private Timestamp regDate;
+	private int expenditure;
 	
 	public int getNum() {
 		return num;
@@ -25,6 +26,9 @@ public class PurchasehistoryVo {
 	public Timestamp getRegDate() {
 		return regDate;
 	}
+	public int getExpenditure() {
+		return expenditure;
+	}
 	public void setNum(int num) {
 		this.num = num;
 	}
@@ -40,11 +44,14 @@ public class PurchasehistoryVo {
 	public void setRegDate(Timestamp regDate) {
 		this.regDate = regDate;
 	}
+	public void setExpenditure(int expenditure) {
+		this.expenditure = expenditure;
+	}
 	
 	@Override
 	public String toString() {
 		return "PurchasehistoryVo [num=" + num + ", buyer=" + buyer + ", product=" + product + ", quantity=" + quantity
-				+ ", regDate=" + regDate + "]";
+				+ ", regDate=" + regDate + ", expenditure=" + expenditure + "]";
 	}
 	
 }

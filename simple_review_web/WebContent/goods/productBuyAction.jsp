@@ -8,7 +8,11 @@ request.setCharacterEncoding("utf-8");
 
 int number = Integer.parseInt(request.getParameter("number"));
 String seller = request.getParameter("seller");
+int price = Integer.parseInt(request.getParameter("price"));
 int amount = Integer.parseInt(request.getParameter("amount"));
+
+// 구매 가격 계산하기
+int expenditure = price * amount;
 
 //로그인 여부 확인
 String id = (String) session.getAttribute("id");
@@ -22,7 +26,7 @@ PurchasehistoryDao purchasehistoryDao = PurchasehistoryDao.getInstance();
 
 GoodsVo goodsVo = goodsDao.getGoodsBynumber(number);
 goodsDao.PurchaseOfProducts(amount, number);
-purchasehistoryDao.addPurchasehistory(id, goodsVo.getName(), amount);
+purchasehistoryDao.addPurchasehistory(id, goodsVo.getName(), amount, expenditure);
 %>
 <script>
 	alert('상품구매 완료');

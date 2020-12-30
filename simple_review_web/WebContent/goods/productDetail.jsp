@@ -55,6 +55,7 @@ pageContext.setAttribute("sellerIdenti", sellerIdenti);
 										<form action="/goods/productBuyAction.jsp" method="post" onsubmit="return chkIntention()">
 											<input type="hidden" name="number" value="<%=goodsVo.getNumber() %>">
 											<input type="hidden" name="seller" value="<%=seller %>">
+											<input type="hidden" name="price" value="<%=goodsVo.getPrice() %>">
 											<select name="amount" style="height: 30px;">
 												<c:forEach begin="1" end="10" var="i">
 													<option value="${i}">${i}</option>

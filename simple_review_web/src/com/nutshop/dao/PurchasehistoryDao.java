@@ -22,7 +22,7 @@ public class PurchasehistoryDao {
 	
 	//////////////////////////////////////////////////////////////////////////////
 	
-	public void addPurchasehistory(String id, String product, int quantity) {
+	public void addPurchasehistory(String id, String product, int quantity, int expenditure) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -31,13 +31,14 @@ public class PurchasehistoryDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			sql = "INSERT INTO purchasehistory (buyer, product, quantity, reg_date) "
-					+ "VALUES (?, ?, ?, now())";
+			sql = "INSERT INTO purchasehistory (buyer, product, quantity, expenditure, reg_date) "
+					+ "VALUES (?, ?, ?, ?, now())";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, product);
 			pstmt.setInt(3, quantity);
+			pstmt.setInt(4, expenditure);
 			
 			pstmt.executeUpdate();
 			
@@ -74,6 +75,7 @@ public class PurchasehistoryDao {
 				purchasehistoryVo.setBuyer(rs.getString("buyer"));
 				purchasehistoryVo.setProduct(rs.getString("product"));
 				purchasehistoryVo.setQuantity(rs.getInt("quantity"));
+				purchasehistoryVo.setExpenditure(rs.getInt("expenditure"));
 				purchasehistoryVo.setRegDate(rs.getTimestamp("reg_date"));
 				
 				phistoryList.add(purchasehistoryVo);

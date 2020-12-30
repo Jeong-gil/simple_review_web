@@ -10,6 +10,7 @@ html {
 
 .right-space {
 	margin-right: 30px;
+	font-weight: bold;
 }
 
 .main-teme {
@@ -143,6 +144,8 @@ a:hover {
 	padding: 10px;
 	height: 60px;
 	margin: 10px 0px;
+	background: #ffd66b;
+    font-size: larger;
 }
 
 .input-float-right {
@@ -190,4 +193,18 @@ th, td {
 	outline: none;
 	float: right;
 	color: #ffffff;
+}
+
+.reset-btn {
+	background: #d9ecf2;
+}
+
+.cancel-btn {
+	background: #f56a79;
+    color: white;
+}
+
+.del-btn {
+	background: #ff414d;
+    color: white;
 }

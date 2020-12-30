@@ -32,9 +32,10 @@ List<PurchasehistoryVo> phistoryList = purchasehistoryDao.getPurchasehistory(id)
 	<div class="product-classification-header">내가 구입한 항목</div>
 	<table border="1"" style="width: 1100px; text-align: center;">
 		<tr>
-			<th style="width: 800px;">상품명</th>
-			<th style="width: 100px;">개수</th>
-			<th style="width: 200px;">구입한 날짜</th>
+			<th style="width: 600px; background: #e7d9ea">상품명</th>
+			<th style="width: 100px; background: #e7d9ea">개수</th>
+			<th style="width: 200px; background: #e7d9ea">주문총액</th>
+			<th style="width: 200px; background: #e7d9ea">구입한 날짜</th>
 		</tr>
 	<%
 		for (PurchasehistoryVo purchasehistoryVo : phistoryList) {
@@ -43,6 +44,7 @@ List<PurchasehistoryVo> phistoryList = purchasehistoryDao.getPurchasehistory(id)
 		<tr>
 			<td><%=purchasehistoryVo.getProduct() %></td>
 			<td><%=purchasehistoryVo.getQuantity() %></td>
+			<td><fmt:formatNumber pattern="#,###원" value="<%=purchasehistoryVo.getExpenditure() %>" /></td>
 			<td><%=purchasehistoryVo.getRegDate() %></td>
 		</tr>
 	

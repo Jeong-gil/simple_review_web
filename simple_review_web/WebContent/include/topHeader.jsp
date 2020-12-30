@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-	<div class="right-text">
+	<div class="right-text" style="background: #f8efd4">
 		<c:choose>
 			<c:when test="${ not empty sessionScope.id }">
 				<span class="right-space">${ sessionScope.id } 님 환영합니다.</span>
@@ -10,7 +10,7 @@
 				<a class="right-space" href="/goods/myProducts.jsp">판매 중인 상품</a>
 				<a class="right-space" href="/goods/purchaseHistory.jsp">구매 내역</a>
 				<a class="right-space" href="/member/myPage.jsp">마이 페이지</a>
-				<a href="/member/logoutAction.jsp">로그아웃</a>
+				<a href="/member/logoutAction.jsp" style="font-weight: bold;">로그아웃</a>
 			</c:when>
 			<c:otherwise>
 				<a class="right-space" href="/member/loginForm.jsp">로그인</a>

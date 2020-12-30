@@ -53,9 +53,10 @@ GoodsVo goodsVo = goodsDao.getGoodsBynumber(number);
 				</select>
 	        </fieldset>
 			<input class="input-submit" type="submit" value="상품수정">
-			<input class="input-float-right" type="button" value="취소" onclick="location.href='/goods/myProducts.jsp'">
-			<input class="input-float-right" type="reset" value="초기화">
-			<input class="input-float-right del-product" type="button" value="상품삭제">
+			<input class="input-submit" type="button" value="상품게시판" onclick="location.href='/board/goodsBoard.jsp?goodsNum=<%=number %>&seller=<%=id %>'">
+			<input class="input-float-right cancel-btn" type="button" value="취소" onclick="location.href='/goods/myProducts.jsp'">
+			<input class="input-float-right reset-btn" type="reset" value="초기화">
+			<input class="input-float-right del-product del-btn" type="button" value="상품삭제">
 		</form>
 	</div>
 </body>

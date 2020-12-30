@@ -28,7 +28,7 @@ if (id != null) {
 	<div class="container-col-login">
 		<form id="frm" action="joinAction.jsp" method="post" onsubmit="return submitCheck();">
 			<input class="login-input id" type="text" name="id" placeholder="아이디" required>
-			<input type="button" id="double-check-button" value="중복확인"/><br>
+			<input style="background: #120078; color: white;" type="button" id="double-check-button" value="중복확인"/><br>
 			<div id="double-check-display" style="font-size: small;"></div>
 			<input class="login-input pw1" type="password" name="passwd" placeholder="비밀번호" required><br>
 			<input class="login-input pw2" type="password" placeholder="비밀번호 확인" required><br>
