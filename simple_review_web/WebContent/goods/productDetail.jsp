@@ -52,7 +52,7 @@ pageContext.setAttribute("sellerIdenti", sellerIdenti);
 										<h3 style="color: #111d5e">내 상품은<br>판매중인 상품에 가시면<br>수정하실 수 있습니다</h3>
 									</c:when>
 									<c:otherwise>
-										<form action="/goods/productBuyAction.jsp" method="post">
+										<form action="/goods/productBuyAction.jsp" method="post" onsubmit="return chkIntention()">
 											<input type="hidden" name="number" value="<%=goodsVo.getNumber() %>">
 											<input type="hidden" name="seller" value="<%=seller %>">
 											<select name="amount" style="height: 30px;">
@@ -77,4 +77,10 @@ pageContext.setAttribute("sellerIdenti", sellerIdenti);
 		</table>
 	</div>
 </body>
+<script type="text/javascript">
+function chkIntention() {
+	var checkSubmit = confirm('구매하시겠습니까?');
+	return checkSubmit;
+}
+</script>
 </html>
