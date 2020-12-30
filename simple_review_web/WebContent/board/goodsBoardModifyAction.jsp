@@ -17,5 +17,5 @@ String pageNum = request.getParameter("pageNum");
 <%
 BoardDao boardDao = BoardDao.getInstance();
 boardDao.updateBoard(boardVo);
-response.sendRedirect("/board/goodsBoardContent.jsp?goodsNum="+ boardVo.getGoodsNum() +"seller=" + boardVo.getSeller() + "&num=" + boardVo.getNum() + "&pageNum=" + pageNum);
+response.sendRedirect("/board/goodsBoardContent.jsp?goodsNum="+ boardVo.getGoodsNum() +"&seller=" + boardVo.getSeller() + "&num=" + boardVo.getNum() + "&pageNum=" + pageNum);
 %>

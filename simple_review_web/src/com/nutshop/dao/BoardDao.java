@@ -363,6 +363,8 @@ public class BoardDao {
 			boardVo.setReLev(0);
 			boardVo.setReSeq(0);
 			
+			System.out.println(boardVo);
+			
 			boardDao.addBoard(boardVo);
 		}
 		

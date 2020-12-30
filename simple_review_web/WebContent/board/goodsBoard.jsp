@@ -109,7 +109,7 @@ a.active {
 		%>
 				<tr>
 					<td><%=boardVo.getNum() %></td>
-					<td>
+					<td style="text-align: left;">
 						<%
 						if (boardVo.getReLev() > 0) { // 답글이면
 							%>
