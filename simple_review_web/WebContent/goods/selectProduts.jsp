@@ -48,7 +48,7 @@ if (sort == null) {
 			<div class="ranking-category"><a href="/goods/selectProduts.jsp?category=<%=category %>">최신순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=highSales" style="font-weight: bolder;">누적판매순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=lowPrice">낮은가격순</a></div>
 		</c:when>
 		<c:when test="${ pageScope.sort eq 'lowPrice' }">
-			<div class="ranking-category"><a href="/goods/selectProduts.jsp?category=<%=category %>">최신순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=highSales">누적판매순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=lowPrice">낮은가격순</a></div>
+			<div class="ranking-category"><a href="/goods/selectProduts.jsp?category=<%=category %>">최신순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=highSales">누적판매순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=lowPrice" style="font-weight: bolder;">낮은가격순</a></div>
 		</c:when>
 		<c:otherwise>
 			<div class="ranking-category"><a href="/goods/selectProduts.jsp?category=<%=category %>" style="font-weight: bolder;">최신순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=highSales">누적판매순</a> | <a href="/goods/selectProduts.jsp?category=<%=category %>&sort=lowPrice">낮은가격순</a></div>

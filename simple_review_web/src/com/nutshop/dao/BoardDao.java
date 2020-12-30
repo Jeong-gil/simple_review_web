@@ -352,7 +352,7 @@ public class BoardDao {
 			
 			int num = boardDao.getNextNum();
 			boardVo.setNum(num);
-			boardVo.setGoodsNum(20);
+			boardVo.setGoodsNum(26);
 			boardVo.setSeller("aaa");
 			boardVo.setName("홍길동" + num);
 			boardVo.setSubject("글제목" + num);
