@@ -34,14 +34,14 @@ if (id == null) {
 <!-- 		<input type="submit" value="패스워드 확인"> -->
 <!-- 	</form> -->
 	<div class="container-col-login">
-		<form action="/member/loginAction.jsp" method="post">
+		<form action="/member/deleteMember.jsp" method="post">
 			<input class="login-input" type="text" value="<%=id %>" readonly><br>
 			<input class="login-input" type="password" name="passwd" placeholder="비밀번호" required><br>
 			<input class="input-submit" type="submit" value="패스워드 확인">
 		</form>
 		<fieldset style="margin-top: 10px; margin-bottom: 20px; width: 250px;">
         	<legend>확인 사항</legend>
-			<함께 삭제되는 목록> <br> - 등록한 상품, <br> - 상품별 Q&A게시판, <br> - 작성한 글
+			&lt;함께 삭제되는 목록&gt; <br> - 등록한 상품, <br> - 상품별 Q&amp;A게시판, <br> - 작성한 글
         </fieldset>
 	</div>
 	
