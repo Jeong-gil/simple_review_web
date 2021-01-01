@@ -281,5 +281,27 @@ public class MemberDao {
 			}
 			return check;
 		}
+		
+		public static void main(String[] args) {
+			
+			MemberDao memberDao = MemberDao.getInstance();
+			
+			for (int i=2; i < 10; i++) {
+				MemberVo memberVo = new MemberVo();
+				
+				memberVo.setId("t" + i);
+				memberVo.setPasswd("t" + i);
+				memberVo.setName("ti" + i);
+				memberVo.setGender("남");
+				memberVo.setEmail("ti" + i + "@ti" + i + ".com");
+				memberVo.setTel("010-0000-0000");
+				memberVo.setAddress("부산광역시");
+				
+				System.out.println(memberVo);
+				
+				memberDao.addMember(memberVo);
+			}
+			
+		}
 
 }

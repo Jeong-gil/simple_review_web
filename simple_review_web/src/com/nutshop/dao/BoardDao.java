@@ -352,11 +352,11 @@ public class BoardDao {
 			
 			int num = boardDao.getNextNum();
 			boardVo.setNum(num);
-			boardVo.setGoodsNum(26);
-			boardVo.setSeller("aaa");
-			boardVo.setName("홍길동" + num);
-			boardVo.setSubject("글제목" + num);
-			boardVo.setContent("글내용" + num);
+			boardVo.setGoodsNum(44);
+			boardVo.setSeller("t7");
+			boardVo.setName("구매자" + num);
+			boardVo.setSubject("문의합니다" + num);
+			boardVo.setContent("대량 구매도 가능한가요?" + num);
 			boardVo.setReadcount(0);
 			boardVo.setRegDate(new Timestamp(System.currentTimeMillis()));
 			boardVo.setReRef(num);
